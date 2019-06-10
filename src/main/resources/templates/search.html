@@ -35,10 +35,16 @@
     </form>
 
     <hr />
-
-    <!-- TODO #2 - Loop over jobs map to display all job fields -->
+<!--    <h3 th:text="${jobs.size() + ' Result(s)'}"></h3>-->
+    <div th:each="job, idx : ${jobs}" th:class="${idx.odd} ? 'odd'">
+         <table th:class="job-listing">
+            <tr th:each="line : ${job}">
+                <td th:text="${#strings.capitalizeWords(line.key)}"></td>
+                <td th:text="${line.value}"></td>
+            </tr>
+        </table>
+    </div>
 
 </div>
-
 </body>
 </html>
